@@ -1,0 +1,6 @@
+HOST=127.0.0.1
+PORT=3306
+DB_NAME=db_name
+CHARSET=utf8mb4
+USER=user
+PASSWORD=pass
