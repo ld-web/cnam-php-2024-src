@@ -14,9 +14,16 @@ if (empty($categoryName)) {
     redirect('/add-category.php?error=' . CategoryError::NAME_REQUIRED);
 }
 
-$dsn = 'mysql:host=127.0.0.1;port=3640;dbname=php_store;charset=utf8mb4';
-$dbUser = 'root';
-$dbPassword = 'mysqltests';
+[
+    'HOST' => $dbHost,
+    'PORT' => $dbPort,
+    'DB_NAME' => $dbName,
+    'CHARSET' => $dbCharset,
+    'USER' => $dbUser,
+    'PASSWORD' => $dbPassword
+] = parse_ini_file(__DIR__ . '/config/db.ini');
+
+$dsn = "mysql:host=$dbHost;port=$dbPort;dbname=$dbName;charset=$dbCharset";
 
 $pdo = new PDO($dsn, $dbUser, $dbPassword);
 
