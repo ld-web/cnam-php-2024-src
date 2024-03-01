@@ -1,20 +1,13 @@
 <?php
-require_once __DIR__ . '/classes/Database.php';
+require_once __DIR__ . '/classes/Categories.php';
 require_once __DIR__ . '/layout/header.php';
 ?>
 
 <h1>Catégories</h1>
 
 <?php
-
-try {
-    $pdo = Database::getConnection();
-} catch (PDOException $ex) {
-    echo "Erreur lors de la connexion à la base de données";
-    exit;
-}
-
-$stmt = $pdo->query("SELECT * FROM category");
+$categoriesDb = new Categories();
+$categories = $categoriesDb->findAll();
 ?>
 
 <div class="list-container">
@@ -23,7 +16,7 @@ $stmt = $pdo->query("SELECT * FROM category");
         <div>Nom</div>
     </div>
 
-    <?php while ($category = $stmt->fetch(PDO::FETCH_ASSOC)) { ?>
+    <?php foreach ($categories as $category) { ?>
     <div class="category-item">
         <div><?php echo $category['id']; ?></div>
         <div><?php echo $category['name']; ?></div>

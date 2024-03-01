@@ -15,3 +15,9 @@
     min-width: 90px;
   }
 }
+
+.notification {
+  background-color: #555;
+  padding: 1em;
+  color: #fff;
+}

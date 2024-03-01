@@ -32,4 +32,7 @@ if ($stmt === false) {
     exit;
 }
 
-echo "OK ! Catégorie enregistrée";
+session_start();
+$_SESSION['message'] = "La catégorie a bien été enregistrée";
+
+redirect('/');
