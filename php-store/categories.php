@@ -19,7 +19,7 @@ $categories = $categoriesDb->findAll();
     <?php foreach ($categories as $category) { ?>
     <div class="category-item">
         <div><?php echo $category['id']; ?></div>
-        <div><?php echo $category['name']; ?></div>
+        <div><a href="/category.php?id=<?php echo $category['id']; ?>"><?php echo $category['name']; ?></a></div>
     </div>
     <?php } ?>
 </div>
