@@ -1,5 +1,6 @@
 <?php
 
+require_once __DIR__ . '/classes/Database.php';
 require_once __DIR__ . '/functions/utils.php';
 require_once __DIR__ . '/classes/CategoryError.php';
 
@@ -14,18 +15,12 @@ if (empty($categoryName)) {
     redirect('/add-category.php?error=' . CategoryError::NAME_REQUIRED);
 }
 
-[
-    'HOST' => $dbHost,
-    'PORT' => $dbPort,
-    'DB_NAME' => $dbName,
-    'CHARSET' => $dbCharset,
-    'USER' => $dbUser,
-    'PASSWORD' => $dbPassword
-] = parse_ini_file(__DIR__ . '/config/db.ini');
-
-$dsn = "mysql:host=$dbHost;port=$dbPort;dbname=$dbName;charset=$dbCharset";
-
-$pdo = new PDO($dsn, $dbUser, $dbPassword);
+try {
+    $pdo = Database::getConnection();
+} catch (PDOException $ex) {
+    echo "Erreur lors de la connexion à la base de données";
+    exit;
+}
 
 $stmt = $pdo->prepare("INSERT INTO category (name) VALUES (:categoryName)");
 $stmt->execute(

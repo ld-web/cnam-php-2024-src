@@ -1,21 +1,19 @@
-<?php require_once __DIR__ . '/layout/header.php'; ?>
+<?php
+require_once __DIR__ . '/classes/Database.php';
+require_once __DIR__ . '/layout/header.php';
+?>
 
 <h1>Catégories</h1>
 
 <?php
 
-[
-    'HOST' => $dbHost,
-    'PORT' => $dbPort,
-    'DB_NAME' => $dbName,
-    'CHARSET' => $dbCharset,
-    'USER' => $dbUser,
-    'PASSWORD' => $dbPassword
-] = parse_ini_file(__DIR__ . '/config/db.ini');
+try {
+    $pdo = Database::getConnection();
+} catch (PDOException $ex) {
+    echo "Erreur lors de la connexion à la base de données";
+    exit;
+}
 
-$dsn = "mysql:host=$dbHost;port=$dbPort;dbname=$dbName;charset=$dbCharset";
-
-$pdo = new PDO($dsn, $dbUser, $dbPassword);
 $stmt = $pdo->query("SELECT * FROM category");
 ?>
 
