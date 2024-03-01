@@ -2,10 +2,10 @@
 
 require_once 'Table.php';
 
-class Categories extends Table
+class Products extends Table
 {
     public function __construct()
     {
-        parent::__construct('category');
+        parent::__construct('product');
     }
 }
