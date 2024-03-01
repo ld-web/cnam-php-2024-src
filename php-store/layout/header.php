@@ -12,11 +12,10 @@
     <header>
         <nav>
             <ul>
-                <li><a href="#">MENU ITEM</a></li>
-                <li><a href="#">MENU ITEM</a></li>
-                <li><a href="#">MENU ITEM</a></li>
-                <li><a href="#">MENU ITEM</a></li>
-                <li><a href="#">MENU ITEM</a></li>
+                <li><a href="/">Accueil</a></li>
+                <li><a href="/categories.php">Catégories</a></li>
+                <li><a href="/add-category.php">Nouvelle catégorie</a></li>
+                <li><a href="/add-product.php">Nouveau produit</a></li>
             </ul>
         </nav>
         <?php
